@@ -1,20 +1,37 @@
-<mat-toolbar  color="primary">
-  <mat-toolbar-row>
-    <span>JS-jargon</span>
-    </mat-toolbar-row>
-</mat-toolbar>
-<main>
-    <mat-card *ngFor="let item of items">
-        <mat-card-header>
-            <mat-card-title>{{item.name}}</mat-card-title>
-        </mat-card-header>
-            <mat-card-content>
-                {{item.description}}
-            </mat-card-content>
-        <mat-card-actions>
-            <a  mat-raised-button href="{{item.url}}"  color="primary">More</a>
-        </mat-card-actions>            
-    </mat-card>        
-          
-</main>
+<header>
+    <mat-toolbar id="navbar" color="primary">
+        <mat-toolbar-row>
+          <span>JS-jargon</span>
+          <span class="fill-remaining-space"></span>
+          <a mat-icon-button (click)="drawer.toggle()">
+              <mat-icon>dehaze</mat-icon>
+          </a>
+        </mat-toolbar-row>
+      </mat-toolbar>
+</header>
+
+
+<mat-drawer-container class="content-container" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side">
+        <span class="active">Home</span>
+        <span>About</span>
+        <span>Contact</span>
+    </mat-drawer>
+
+    <main class="main-container">
+        <mat-card *ngFor="let item of items" class="main-card">
+            <mat-card-header>
+                <mat-card-title>{{item.name}}</mat-card-title>
+            </mat-card-header>
+                <mat-card-content>
+                    {{item.description}}
+                </mat-card-content>
+            <mat-card-actions>
+                <a  mat-raised-button href="{{item.url}}"  color="primary">More</a>
+            </mat-card-actions>            
+        </mat-card>        
+              
+    </main>
+
+</mat-drawer-container>
   
